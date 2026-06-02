@@ -1,0 +1,6 @@
+Customer Complaint
+Customer Name: David Lin
+Customer ID: CUS-7782
+Priority: High
+Complaint: The service has been unacceptable this month with repeated outages.
+Requested Action: Contact me about compensation for the downtime.

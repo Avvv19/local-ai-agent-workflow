@@ -1,0 +1,3 @@
+Internal Operations Request
+Issue: New hire starting Monday needs a laptop and email access provisioned.
+Requested Action: Provision laptop and email access for the new hire.

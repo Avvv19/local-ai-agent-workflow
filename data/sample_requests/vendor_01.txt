@@ -1,0 +1,5 @@
+Vendor Request
+Vendor Name: Acme Supplies
+Request Type: Update purchase order
+Issue: We need to update the purchase order details, PO number 55120.
+Requested Action: Confirm the procurement contact and updated payment terms.

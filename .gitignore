@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.env
+data/workflow.db
+data/outputs/*
+!data/outputs/.gitkeep
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/

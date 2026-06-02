@@ -1,0 +1,5 @@
+Customer Complaint
+Customer ID: CUS-8830
+Priority: Medium
+Complaint: I am disappointed that my support request was ignored for a week.
+Requested Action: Escalate my case and provide a status update.

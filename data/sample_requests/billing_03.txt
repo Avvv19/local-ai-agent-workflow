@@ -1,0 +1,6 @@
+Billing Request
+Customer ID: CUS-3456
+Invoice Number: INV-77120
+Priority: Low
+Issue: A late fee was charged even though payment was made on time.
+Requested Action: Remove the late fee from the account.

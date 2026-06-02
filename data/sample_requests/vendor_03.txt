@@ -1,0 +1,5 @@
+Vendor Request
+Vendor Name: Globex Procurement
+Request Type: Invoicing cadence change
+Issue: We want to change our invoicing cadence to monthly going forward.
+Requested Action: Update the invoicing cadence on our vendor account.

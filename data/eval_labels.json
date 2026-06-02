@@ -1,0 +1,142 @@
+{
+  "billing_01.txt": {
+    "document_type": "Billing Request",
+    "routing_decision": "Finance Review",
+    "expect_human_review": false
+  },
+  "billing_02.txt": {
+    "document_type": "Billing Request",
+    "routing_decision": "Finance Review",
+    "expect_human_review": false
+  },
+  "billing_03.txt": {
+    "document_type": "Billing Request",
+    "routing_decision": "Finance Review",
+    "expect_human_review": false
+  },
+  "billing_04_missing_invoice.txt": {
+    "document_type": "Billing Request",
+    "routing_decision": "Finance Review",
+    "expect_human_review": true
+  },
+  "billing_05_missing_id.txt": {
+    "document_type": "Billing Request",
+    "routing_decision": "Finance Review",
+    "expect_human_review": true
+  },
+  "complaint_01.txt": {
+    "document_type": "Customer Complaint",
+    "routing_decision": "Customer Support Review",
+    "expect_human_review": false
+  },
+  "complaint_02.txt": {
+    "document_type": "Customer Complaint",
+    "routing_decision": "Customer Support Review",
+    "expect_human_review": false
+  },
+  "complaint_03.txt": {
+    "document_type": "Customer Complaint",
+    "routing_decision": "Customer Support Review",
+    "expect_human_review": false
+  },
+  "complaint_04_missing_action.txt": {
+    "document_type": "Customer Complaint",
+    "routing_decision": "Customer Support Review",
+    "expect_human_review": true
+  },
+  "general_01.txt": {
+    "document_type": "General Inquiry",
+    "routing_decision": "Human Review Required",
+    "expect_human_review": true
+  },
+  "general_02.txt": {
+    "document_type": "General Inquiry",
+    "routing_decision": "Human Review Required",
+    "expect_human_review": true
+  },
+  "general_03_ambiguous.txt": {
+    "document_type": "General Inquiry",
+    "routing_decision": "Human Review Required",
+    "expect_human_review": true
+  },
+  "general_04_short.txt": {
+    "document_type": "General Inquiry",
+    "routing_decision": "Human Review Required",
+    "expect_human_review": true
+  },
+  "internal_01.txt": {
+    "document_type": "Internal Operations Request",
+    "routing_decision": "Operations Review",
+    "expect_human_review": false
+  },
+  "internal_02.txt": {
+    "document_type": "Internal Operations Request",
+    "routing_decision": "Operations Review",
+    "expect_human_review": false
+  },
+  "internal_03.txt": {
+    "document_type": "Internal Operations Request",
+    "routing_decision": "Operations Review",
+    "expect_human_review": false
+  },
+  "policy_01.txt": {
+    "document_type": "Policy Question",
+    "routing_decision": "Operations Review",
+    "expect_human_review": false
+  },
+  "policy_02.txt": {
+    "document_type": "Policy Question",
+    "routing_decision": "Operations Review",
+    "expect_human_review": false
+  },
+  "policy_03.txt": {
+    "document_type": "Policy Question",
+    "routing_decision": "Operations Review",
+    "expect_human_review": false
+  },
+  "policy_04_missing_topic.txt": {
+    "document_type": "Policy Question",
+    "routing_decision": "Operations Review",
+    "expect_human_review": true
+  },
+  "support_01.txt": {
+    "document_type": "Support Ticket",
+    "routing_decision": "Technical Review",
+    "expect_human_review": false
+  },
+  "support_02.txt": {
+    "document_type": "Support Ticket",
+    "routing_decision": "Technical Review",
+    "expect_human_review": false
+  },
+  "support_03.txt": {
+    "document_type": "Support Ticket",
+    "routing_decision": "Technical Review",
+    "expect_human_review": false
+  },
+  "support_04_missing_priority.txt": {
+    "document_type": "Support Ticket",
+    "routing_decision": "Technical Review",
+    "expect_human_review": true
+  },
+  "vendor_01.txt": {
+    "document_type": "Vendor Request",
+    "routing_decision": "Finance Review",
+    "expect_human_review": false
+  },
+  "vendor_02.txt": {
+    "document_type": "Vendor Request",
+    "routing_decision": "Finance Review",
+    "expect_human_review": false
+  },
+  "vendor_03.txt": {
+    "document_type": "Vendor Request",
+    "routing_decision": "Finance Review",
+    "expect_human_review": false
+  },
+  "vendor_04_missing_vendor.txt": {
+    "document_type": "Vendor Request",
+    "routing_decision": "Finance Review",
+    "expect_human_review": true
+  }
+}

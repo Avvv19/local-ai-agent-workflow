@@ -1,0 +1,3 @@
+Internal Operations Request
+Issue: The team needs a shared drive folder set up for the new project.
+Requested Action: Create the shared folder and grant team access.

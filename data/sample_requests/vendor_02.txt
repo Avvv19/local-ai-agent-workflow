@@ -1,0 +1,5 @@
+Vendor Request
+Vendor Name: Northwind Traders
+Request Type: New supplier onboarding
+Issue: We would like to be added as an approved supplier.
+Requested Action: Begin the vendor onboarding process.

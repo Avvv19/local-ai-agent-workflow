@@ -1,0 +1,3 @@
+Internal Operations Request
+Issue: We need an access request approved for the analytics dashboard.
+Requested Action: Approve dashboard access for two analysts.

@@ -1,0 +1,5 @@
+Customer ID: CUS-2210
+Invoice Number: INV-90233
+Priority: High
+Issue: The billing amount does not reflect our agreed discounted rate.
+Requested Action: Adjust the invoice to the agreed rate and reissue it.

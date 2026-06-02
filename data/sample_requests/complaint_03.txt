@@ -1,0 +1,5 @@
+Customer Complaint
+Customer ID: CUS-9001
+Priority: Urgent
+Complaint: I am frustrated, the product arrived damaged and unusable.
+Requested Action: Send a replacement immediately.

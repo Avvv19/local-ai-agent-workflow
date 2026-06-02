@@ -1,0 +1,5 @@
+Support Ticket
+Customer ID: CUS-4471
+Priority: High
+Issue: I cannot log in, the page shows an error after I enter my password.
+Requested Action: Restore my login access.

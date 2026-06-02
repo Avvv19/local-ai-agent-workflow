@@ -1,0 +1,4 @@
+Support Ticket
+Priority: Medium
+Issue: The mobile app keeps showing a connection error on startup.
+Requested Action: Investigate the app connection bug and provide a fix.

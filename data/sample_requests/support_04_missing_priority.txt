@@ -1,0 +1,3 @@
+Support Ticket
+Issue: There is a bug where the report page does not load.
+Requested Action: Please fix the report page error.

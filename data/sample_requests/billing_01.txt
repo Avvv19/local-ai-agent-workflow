@@ -1,0 +1,7 @@
+Subject: Invoice overcharge - need correction
+Customer Name: Maria Gomez
+Customer ID: CUS-1029
+Invoice Number: INV-88421
+Priority: Medium
+Issue: I was billed twice for my November subscription, a suspected overcharge.
+Requested Action: Refund the duplicate charge and send a corrected invoice.

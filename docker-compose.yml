@@ -1,0 +1,42 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8000:8000"   # FastAPI (/docs, /metrics)
+      - "8501:8501"   # Streamlit
+    environment:
+      LLM_BACKEND: ${LLM_BACKEND:-mock}
+      OLLAMA_HOST: http://ollama:11434
+      OLLAMA_MODEL: llama3
+      # For Postgres, run with the "postgres" profile and set:
+      # DATABASE_URL: postgresql+psycopg2://workflow:workflow@postgres:5432/workflow
+    volumes:
+      - ./data:/app/data
+
+  # Optional local model server:  docker compose --profile ollama up
+  ollama:
+    image: ollama/ollama:latest
+    profiles: ["ollama"]
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_models:/root/.ollama
+
+  # Optional PostgreSQL:  docker compose --profile postgres up
+  postgres:
+    image: postgres:16-alpine
+    profiles: ["postgres"]
+    environment:
+      POSTGRES_USER: workflow
+      POSTGRES_PASSWORD: workflow
+      POSTGRES_DB: workflow
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+volumes:
+  ollama_models:
+  pg_data:

@@ -1,0 +1,4 @@
+Vendor Request
+Request Type: Payment terms update
+Issue: We need to revise our payment terms with procurement.
+Requested Action: Update the payment terms.
