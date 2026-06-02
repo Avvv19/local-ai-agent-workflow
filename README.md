@@ -24,12 +24,12 @@
 
 ## What it does
 
-This project takes unstructured business documents — tickets, forms, emails, requests, operational notes — and turns them into clean, structured, review-ready records using a local agentic AI pipeline. Every record gets classified, key fields extracted, a summary generated, a routing decision made, validation checked, a confidence score assigned, and a human-review flag set if anything looks uncertain.
+This project takes unstructured business documents - tickets, forms, emails, requests, operational notes — and turns them into clean, structured, review-ready records using a local agentic AI pipeline. Every record gets classified, key fields extracted, a summary generated, a routing decision made, validation checked, a confidence score assigned, and a human-review flag set if anything looks uncertain.
 
-It supports two angles:
+It supports multiple angles:
 
-- **AI Engineer** — agentic workflow, step orchestration, backend APIs, validation gates, local AI execution
-- **Data Scientist** — text preprocessing, classification, structured output, evaluation metrics, decision support
+- Agentic workflow, step orchestration, backend APIs, validation gates, local AI execution
+- Text preprocessing, classification, structured output, evaluation metrics, decision support
 
 The full pipeline:
 
