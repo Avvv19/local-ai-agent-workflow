@@ -1,332 +1,282 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,20:1a0533,50:00d4ff,80:6e40c9,100:0d1117&height=240&section=header&text=Local%20AI%20Agent%20Workflow&fontSize=42&fontColor=00d4ff&fontAlignY=38&desc=🤖%20Autonomous%20Document%20Intelligence%20Pipeline%20·%20Local%20First%20·%20Production%20Grade&descSize=16&descColor=c084fc&animation=twinkling" width="100%"/>
-
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=22&duration=3000&pause=800&color=00D4FF&background=0D111700&center=true&vCenter=true&multiline=false&repeat=true&width=800&height=55&lines=received+→+clean+→+classify+→+extract+→+summarize;→+route+→+score+→+validate+→+escalate+→+log;100%25+JSON+Validity+·+100%25+Classification+Match;No+Paid+APIs+·+No+Cloud+Credentials+·+Runs+Locally" alt="Pipeline Animation"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,30:1a0533,60:0d2d6b,100:0d1117&height=200&section=header&text=Local%20AI%20Agent%20Workflow&fontSize=46&fontColor=ffffff&fontAlignY=40&fontStyle=bold&desc=Autonomous%20Document%20Intelligence%20Pipeline%20%C2%B7%20Local%20First%20%C2%B7%20Production%20Grade&descSize=15&descColor=a5b4fc&animation=fadeIn" width="100%"/>
 
 <br/>
 
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
-![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
-![Ollama](https://img.shields.io/badge/Ollama-000000?style=for-the-badge&logoColor=white)
-![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white)
-![GitHub Actions](https://img.shields.io/badge/CI%2FCD-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=18&duration=3000&pause=900&color=818CF8&background=0D111700&center=true&vCenter=true&multiline=false&repeat=true&width=750&height=45&lines=received+%E2%86%92+clean+%E2%86%92+classify+%E2%86%92+extract+%E2%86%92+summarize+%E2%86%92+log;100%25+JSON+Validity+%C2%B7+100%25+Classification+%C2%B7+100%25+Routing;No+paid+APIs+%C2%B7+no+cloud+credentials+%C2%B7+runs+entirely+locally" alt="Typing SVG" />
 
-<br/>
+<br/><br/>
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
+![Ollama](https://img.shields.io/badge/Ollama-000000?style=flat-square&logoColor=white)
+![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square&logo=langchain&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/CI%2FCD-2088FF?style=flat-square&logo=github-actions&logoColor=white)
+
+</div>
+
+---
+
+## What it does
+
+This project takes unstructured business documents — tickets, forms, emails, requests, operational notes — and turns them into clean, structured, review-ready records using a local agentic AI pipeline. Every record gets classified, key fields extracted, a summary generated, a routing decision made, validation checked, a confidence score assigned, and a human-review flag set if anything looks uncertain.
+
+It supports two angles:
+
+- **AI Engineer** — agentic workflow, step orchestration, backend APIs, validation gates, local AI execution
+- **Data Scientist** — text preprocessing, classification, structured output, evaluation metrics, decision support
+
+The full pipeline:
 
 ```
-◈━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◈
-          UNSTRUCTURED DOCUMENTS  →  INTELLIGENT STRUCTURED RECORDS
-                    No Paid APIs · No Cloud Credentials · Local First
-◈━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◈
+received → clean → classify → extract → summarize → route → score → validate → escalate → log
 ```
 
-</div>
+Each step is small, independently testable, and fully logged. A rule-based validation gate plus a transparent confidence score decide whether a result is *Ready for Review* or flagged for *Human Review*.
 
 ---
 
-<div align="center">
+## The business problem it solves
 
-## 🧠 WHAT IT DOES
+Teams still handle incoming tickets, forms, and requests by hand — read it, classify it, pull out the fields, summarize it, decide where it goes, check for missing info, prep it for review. That's slow, inconsistent, and doesn't scale.
 
-</div>
-
-Converts unstructured business documents — forms, tickets, emails, requests, operational notes — into **classified, extracted, summarized, routed, and review-ready structured records** using a local-first agentic AI pipeline.
-
-It supports both an **AI Engineer** angle (agentic workflow, automation, backend APIs, validation, review queue, local AI execution) and a **Data Scientist** angle (text preprocessing, classification, structured records, evaluation checks, reporting-ready outputs).
-
-<div align="center">
-
-```
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│                        🔄  PIPELINE FLOW                                        │
-│                                                                                 │
-│  📥 received → 🧹 clean → 🏷️  classify → 🔍 extract → 📝 summarize             │
-│             → 🔀 route → 📊 score → ✅ validate → 🚨 escalate → 🗄️  log        │
-│                                                                                 │
-│  Each step: small · independently testable · logged · confidence-scored         │
-└─────────────────────────────────────────────────────────────────────────────────┘
-```
-
-</div>
+This workflow automates that entire loop while keeping a human in the loop for anything low-confidence or incomplete.
 
 ---
 
-<div align="center">
+## Screenshots
 
-## 📊 EVALUATION RESULTS
+### Process & Result
 
-| Metric | Score | Count |
-|:---|:---:|:---:|
-| ✅ JSON Validity Rate | **100.0%** | 28/28 |
-| ✅ Classification Match | **100.0%** | 28/28 |
-| ✅ Routing Match | **100.0%** | 28/28 |
-| ✅ Required-Field Completion | **78.6%** | 22/28 |
-| ✅ Human-Review Precision | **1.00** | — |
-| ✅ Human-Review Recall | **1.00** | — |
+<img src="docs/screenshots/process_result.png" alt="Process & Result" width="100%"/>
 
-*Sample set: 28 documents · 7 categories · 6 incomplete · 4 ambiguous · 10 escalation triggers*
+### Review Queue
 
-</div>
+<img src="docs/screenshots/review_queue.png" alt="Review Queue" width="100%"/>
 
----
+### History
 
-<div align="center">
+<img src="docs/screenshots/history.png" alt="History" width="100%"/>
 
-## 🎯 BUSINESS PROBLEM
+### Dashboard
 
-</div>
-
-Teams still process incoming tickets, forms, emails, and requests by hand: read it, classify it, pull out fields, summarize, decide where it goes, check for missing info, prep it for review. **Slow · Inconsistent · Hard to scale.**
-
-This local AI workflow automates that entire loop while keeping a human in the loop for anything low-confidence or incomplete.
+<img src="docs/screenshots/dashboard.png" alt="Dashboard" width="100%"/>
 
 ---
 
-<div align="center">
+## Evaluation results
 
-## 📄 DOCUMENT CATEGORIES & ROUTING
+Tested on a labelled sample of 28 documents across 7 categories (including 6 incomplete, 4 ambiguous, and 10 that should trigger human review):
 
-</div>
+| Metric | Result |
+|:---|:---:|
+| JSON validity | 100% — 28/28 |
+| Classification match | 100% — 28/28 |
+| Routing match | 100% — 28/28 |
+| Required-field completion | 78.6% — 22/28 |
+| Human-review precision | 1.00 |
+| Human-review recall | 1.00 |
 
-<div align="center">
-
-| 🏷️ Category | 🔀 Routing Decision |
-|:---:|:---:|
-| `Billing Request` | Finance Review |
-| `Support Ticket` | Customer Support Review |
-| `Customer Complaint` | Operations Review |
-| `Vendor Request` | Technical Review |
-| `Internal Operations Request` | Operations Review |
-| `Policy Question` | General Queue |
-| `General Inquiry` | General Queue |
-
-</div>
+These numbers reflect that the backend logic and test labels are aligned, and that the escalation behaviour works as intended — not a claim about real-world model accuracy.
 
 ---
 
-<div align="center">
+## Document categories and routing
 
-## 📤 OUTPUT SCHEMA
+| Category | Routed to |
+|:---|:---|
+| Billing Request | Finance Review |
+| Support Ticket | Customer Support Review |
+| Customer Complaint | Operations Review |
+| Vendor Request | Technical Review |
+| Internal Operations Request | Operations Review |
+| Policy Question | General Queue |
+| General Inquiry | General Queue |
 
-</div>
+Different document types expect different required fields, so validation is per-type. A billing request needs a customer ID and invoice number; a support ticket needs an issue description and priority.
+
+---
+
+## Output schema
+
+Every processed document produces a structured record like this:
 
 ```json
 {
-  "document_type"    : "Billing Request",
-  "priority"         : "Medium",
-  "customer_id"      : "CUS-1029",
-  "invoice_number"   : "INV-88421",
-  "issue_summary"    : "Customer was billed twice — suspected overcharge.",
-  "requested_action" : "Refund duplicate charge and reissue invoice.",
-  "summary"          : "Billing Request: customer reports duplicate charge, requests correction.",
-  "routing_decision" : "Finance Review",
-  "missing_fields"   : [],
+  "document_type":     "Billing Request",
+  "priority":          "Medium",
+  "customer_id":       "CUS-1029",
+  "invoice_number":    "INV-88421",
+  "issue_summary":     "Customer was billed twice — suspected overcharge.",
+  "requested_action":  "Refund the duplicate charge and reissue the invoice.",
+  "summary":           "Billing Request: customer reports a duplicate charge and asks for a correction.",
+  "routing_decision":  "Finance Review",
+  "missing_fields":    [],
   "validation_status": "pass",
-  "review_status"    : "Ready for Review",
-  "confidence_flag"  : "Acceptable",
-  "confidence_score" : 1.0
+  "review_status":     "Ready for Review",
+  "confidence_flag":   "Acceptable",
+  "confidence_score":  1.0
 }
 ```
 
 ---
 
-<div align="center">
+## Confidence scoring
 
-## 🏗️ ARCHITECTURE
-
-</div>
-
-<div align="center">
-
-| Layer | Component |
-|:---:|:---|
-| 🖥️ **Frontend** | Streamlit UI — process, role-filtered review queue, history, dashboard |
-| ⚡ **Backend** | FastAPI — optional API-key auth, CORS, Prometheus `/metrics`, CSV export |
-| 🧩 **Orchestration** | Plain-Python step orchestrator with validation gate + confidence scoring |
-| 🤖 **Model** | Ollama + Llama 3 (optionally via LangChain) — or deterministic mock |
-| 🛡️ **Validation** | Rule-based Python checks + transparent confidence scoring |
-| 🗄️ **Data** | SQLAlchemy ORM → SQLite or PostgreSQL · Alembic migrations |
-| 📈 **Observability** | Structured logging + Prometheus metrics |
-
-</div>
-
----
-
-<div align="center">
-
-## 🔧 CONFIDENCE SCORING — TRANSPARENT, NOT RANDOM
-
-</div>
+The confidence score is calculated from transparent, verifiable workflow checks — not a black-box LLM number. It starts at 1.0 and loses points for:
 
 ```python
-# Confidence is calculated from verifiable workflow checks — never a black box
-confidence_score = 1.0   # starts perfect
-
 deductions = {
-    "invalid_json"              : -0.40,
-    "failed_validation"         : -0.30,
-    "low_classification_conf"   : -0.20,
+    "invalid_json":                -0.40,
+    "failed_validation":           -0.30,
+    "low_classification_conf":     -0.20,
     "each_missing_required_field": -0.10,
-    "weak_or_empty_summary"     : -0.10,
+    "weak_or_empty_summary":       -0.10,
 }
-
-# A document routes to Human Review when score < 0.6
+# Documents with score < 0.6 are automatically routed to Human Review
 ```
 
 ---
 
-<div align="center">
+## When human review is triggered
 
-## 🚨 HUMAN REVIEW TRIGGERS
+A document is escalated when any of the following is true:
 
-</div>
-
-<div align="center">
-
-```
-A document is escalated to Human Review when ANY of the following hold:
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  🔴  Required fields are missing
-  🔴  Document type is unclear (low classification confidence)
-  🔴  Routing decision is unsupported or validation fails
-  🔴  Confidence score < 0.6
-  🔴  JSON output invalid after retry
-  🔴  Summary is empty or too weak
-  🔴  Input text is too short or ambiguous
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-```
-
-</div>
+- Required fields are missing
+- The document type could not be determined confidently
+- The routing decision is unsupported or validation fails
+- Confidence score is below 0.6
+- JSON output is still invalid after a retry
+- The summary is empty or too weak
+- The input text is too short or ambiguous
 
 ---
 
-<div align="center">
+## Architecture
 
-## 🌐 API ENDPOINTS
+| Layer | What it does |
+|:---|:---|
+| Frontend | Streamlit UI — process documents, role-filtered review queue, history, dashboard |
+| Backend | FastAPI — optional API-key auth, CORS, Prometheus `/metrics`, CSV export |
+| Orchestration | Plain-Python step orchestrator with a validation gate and confidence scoring |
+| Model | Ollama + Llama 3 (optionally via LangChain), or a deterministic mock for testing |
+| Validation | Rule-based Python checks + transparent confidence scoring |
+| Data | SQLAlchemy ORM → SQLite or PostgreSQL; Alembic for schema migrations |
+| Observability | Structured logging + Prometheus metrics |
 
-</div>
+---
 
-<div align="center">
+## API endpoints
 
-| Method | Path | Purpose |
+| Method | Path | What it does |
 |:---:|:---|:---|
-| `GET` | `/health` | Health check + active backend |
-| `POST` | `/process` | Run workflow on pasted text |
-| `POST` | `/upload` | Run workflow on .txt/.pdf |
-| `GET` | `/result/{id}` | Full record + workflow trace |
-| `GET` | `/history` | Recent processed documents |
-| `GET` | `/review-queue?role=` | Open review items, optional role filter |
-| `POST` | `/review/{id}/resolve` | Resolve / approve / reject |
-| `PATCH` | `/result/{id}/route` | Reviewer routing override |
-| `GET` | `/metrics-summary` | Aggregate counts (JSON) |
-| `GET` | `/export.csv` | History as CSV |
-| `GET` | `/metrics` | Prometheus exposition format |
-
-</div>
+| GET | `/health` | Health check and active backend info |
+| POST | `/process` | Run the workflow on pasted text |
+| POST | `/upload` | Run the workflow on a .txt or .pdf |
+| GET | `/result/{id}` | Full record and workflow trace |
+| GET | `/history` | Recently processed documents |
+| GET | `/review-queue?role=` | Open review items, filterable by role |
+| POST | `/review/{id}/resolve` | Resolve, approve, or reject |
+| PATCH | `/result/{id}/route` | Override the routing decision |
+| GET | `/metrics-summary` | Aggregate counts as JSON |
+| GET | `/export.csv` | Export history as CSV |
+| GET | `/metrics` | Prometheus exposition format |
 
 ---
 
-<div align="center">
-
-## 🚀 HOW TO RUN LOCALLY
-
-</div>
+## Running it locally
 
 ```bash
-# ── 1. Install & Setup ────────────────────────────────────────────────────────
+# Install dependencies and run migrations
 pip install -r requirements.txt
 make migrate          # or the app auto-creates tables on first run
 
-# ── 2. Start Services ─────────────────────────────────────────────────────────
-make api              # → http://localhost:8000/docs
-make ui               # → http://localhost:8501  (separate terminal)
+# Start the services (run these in separate terminals)
+make api              # API at http://localhost:8000/docs
+make ui               # UI  at http://localhost:8501
 
-# ── 3. Test & Lint ────────────────────────────────────────────────────────────
+# Tests and checks
 make test             # pytest + coverage
 make lint             # ruff
-make eval             # metrics over labelled sample set
+make eval             # evaluation over the labelled sample set
 ```
+
+To use a real local model:
 
 ```bash
-# ── Real Local Model (Ollama + Llama 3) ───────────────────────────────────────
 ollama pull llama3
-export LLM_BACKEND=ollama          # or "langchain" (pip install langchain-ollama)
-python scripts/check_ollama.py     # verify connectivity
+export LLM_BACKEND=ollama        # or "langchain" (needs: pip install langchain-ollama)
+python scripts/check_ollama.py   # verify Ollama is reachable
 python -m app.main
-
-# ── Docker ────────────────────────────────────────────────────────────────────
-docker compose up --build                   # mock backend, API + UI
-docker compose --profile ollama up          # add local Ollama service
-docker compose --profile postgres up        # add PostgreSQL service
 ```
+
+With Docker:
+
+```bash
+docker compose up --build                  # mock backend, API + UI
+docker compose --profile ollama up         # adds a local Ollama service
+docker compose --profile postgres up       # switches to PostgreSQL
+```
+
+---
+
+## Tech stack
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white)
+![Pydantic](https://img.shields.io/badge/Pydantic-E92063?style=flat-square&logo=pydantic&logoColor=white)
+![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-D71F00?style=flat-square&logoColor=white)
+![Alembic](https://img.shields.io/badge/Alembic-6C47A3?style=flat-square&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=flat-square&logo=streamlit&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white)
+![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=flat-square&logo=prometheus&logoColor=white)
+![Ollama](https://img.shields.io/badge/Ollama-000000?style=flat-square&logoColor=white)
+![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=flat-square&logo=langchain&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+![pytest](https://img.shields.io/badge/pytest-0A9EDC?style=flat-square&logo=pytest&logoColor=white)
+![Ruff](https://img.shields.io/badge/Ruff-D7FF64?style=flat-square&logoColor=black)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=flat-square&logo=github-actions&logoColor=white)
+
+---
+
+## Limitations
+
+- The default backend uses deterministic mock logic for reproducibility — it's not running a real LLM unless you configure Ollama.
+- Ollama + Llama 3 require local installation and are not exercised by the bundled tests.
+- The evaluation sample set is small (28 documents).
+- Scanned PDFs need OCR, which isn't included yet — text-based PDFs work fine.
+- This is a local portfolio project, not an enterprise production system.
+
+---
+
+## What's planned
+
+- OCR support for scanned PDFs
+- Document-type-specific extraction schemas
+- Per-user authentication and audit trails
+- Alerting on top of the Prometheus metrics
+- Model-based confidence scoring
+- Multi-tenant review queues
+- Deployment automation
+- Historical evaluation dashboard
 
 ---
 
 <div align="center">
 
-## 🛠️ TECH STACK
+Built by **Venkata Vivek Varma Alluru** &nbsp;·&nbsp; AI Engineer &nbsp;·&nbsp; ML Engineer &nbsp;·&nbsp; Data Scientist
+
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/Avvv19)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com)
+[![Medium](https://img.shields.io/badge/Medium-12100E?style=flat-square&logo=medium&logoColor=white)](https://medium.com)
+
+*"The best AI system is the one that solves real problems reliably at scale."*
 
 </div>
 
-<div align="center">
-
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
-![Pydantic](https://img.shields.io/badge/Pydantic-E92063?style=for-the-badge&logo=pydantic&logoColor=white)
-![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-D71F00?style=for-the-badge&logoColor=white)
-![Alembic](https://img.shields.io/badge/Alembic-6C47A3?style=for-the-badge&logoColor=white)
-![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
-![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
-![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=for-the-badge&logo=prometheus&logoColor=white)
-![Ollama](https://img.shields.io/badge/Ollama-000000?style=for-the-badge&logoColor=white)
-![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-![pytest](https://img.shields.io/badge/pytest-0A9EDC?style=for-the-badge&logo=pytest&logoColor=white)
-![Ruff](https://img.shields.io/badge/Ruff-D7FF64?style=for-the-badge&logoColor=black)
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
-
-</div>
-
----
-
-<div align="center">
-
-## ⚠️ LIMITATIONS & ROADMAP
-
-</div>
-
-```
-Current Limitations                    Planned Improvements
-────────────────────────────────────   ────────────────────────────────────────
-• Default: deterministic mock backend  → OCR for scanned PDFs
-• Ollama/Llama 3 needs local setup     → Per-type extraction schemas
-• Small evaluation sample set          → Per-user authentication & audit
-• No OCR for scanned PDFs              → Alerting on metrics dashboard
-                                       → Model-based confidence scoring
-                                       → Multi-tenant review queues
-                                       → Deployment automation
-                                       → Historical evaluation dashboard
-```
-
----
-
-<div align="center">
-
-## 👤 BUILT BY
-
-**Venkata Vivek Varma Alluru**
-*AI Engineer · ML Engineer · Data Scientist*
-
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Avvv19)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com)
-[![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com)
-
-> *"The best AI system is the one that solves real problems reliably at scale."*
-
-</div>
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,25:6e40c9,50:00d4ff,75:1a0533,100:0d1117&height=120&section=footer" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,40:0d2d6b,70:1a0533,100:0d1117&height=100&section=footer" width="100%"/>
