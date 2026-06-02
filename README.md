@@ -1,259 +1,332 @@
-# Local AI Agent Workflow Automation System
+<div align="center">
 
-Local AI Agent Workflow Automation System converts unstructured business requests
-into classified, extracted, summarized, routed, and review-ready records. It is
-designed for document-heavy workflows such as forms, tickets, emails, requests, and
-operational notes. The system focuses on reliability through validation checks,
-retry handling, SQLite logging, confidence scoring, and human review flags.
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,20:1a0533,50:00d4ff,80:6e40c9,100:0d1117&height=240&section=header&text=Local%20AI%20Agent%20Workflow&fontSize=42&fontColor=00d4ff&fontAlignY=38&desc=🤖%20Autonomous%20Document%20Intelligence%20Pipeline%20·%20Local%20First%20·%20Production%20Grade&descSize=16&descColor=c084fc&animation=twinkling" width="100%"/>
 
-It uses an **agentic workflow pattern** where separate steps handle classification,
-extraction, summarization, routing, validation, logging, and human review. It runs
-locally by default with no paid APIs, paid cloud services, or external credentials.
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=22&duration=3000&pause=800&color=00D4FF&background=0D111700&center=true&vCenter=true&multiline=false&repeat=true&width=800&height=55&lines=received+→+clean+→+classify+→+extract+→+summarize;→+route+→+score+→+validate+→+escalate+→+log;100%25+JSON+Validity+·+100%25+Classification+Match;No+Paid+APIs+·+No+Cloud+Credentials+·+Runs+Locally" alt="Pipeline Animation"/>
+
+<br/>
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
+![Ollama](https://img.shields.io/badge/Ollama-000000?style=for-the-badge&logoColor=white)
+![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/CI%2FCD-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
+
+<br/>
+
+```
+◈━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◈
+          UNSTRUCTURED DOCUMENTS  →  INTELLIGENT STRUCTURED RECORDS
+                    No Paid APIs · No Cloud Credentials · Local First
+◈━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━◈
+```
+
+</div>
 
 ---
 
-## What it does
+<div align="center">
 
-This project converts unstructured business requests into classified records,
-extracted fields, summaries, routing decisions, validation status, and review-ready
-outputs using a local AI workflow. It supports both an **AI Engineer** angle
-(agentic workflow, automation, backend APIs, validation, review queue, local AI
-execution) and a **Data Scientist** angle (text preprocessing, classification,
-structured records, evaluation checks, reporting-ready outputs, decision support).
+## 🧠 WHAT IT DOES
+
+</div>
+
+Converts unstructured business documents — forms, tickets, emails, requests, operational notes — into **classified, extracted, summarized, routed, and review-ready structured records** using a local-first agentic AI pipeline.
+
+It supports both an **AI Engineer** angle (agentic workflow, automation, backend APIs, validation, review queue, local AI execution) and a **Data Scientist** angle (text preprocessing, classification, structured records, evaluation checks, reporting-ready outputs).
+
+<div align="center">
 
 ```
-received -> clean -> classify -> extract -> summarize -> route -> score -> validate -> escalate -> log
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                        🔄  PIPELINE FLOW                                        │
+│                                                                                 │
+│  📥 received → 🧹 clean → 🏷️  classify → 🔍 extract → 📝 summarize             │
+│             → 🔀 route → 📊 score → ✅ validate → 🚨 escalate → 🗄️  log        │
+│                                                                                 │
+│  Each step: small · independently testable · logged · confidence-scored         │
+└─────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-Each step is small, independently testable, and logged. A rule-based validation
-gate plus a transparent confidence score decide whether a result is **Ready for
-Review** or flagged for **Human Review**.
+</div>
 
-## Business Problem
+---
 
-Teams still process incoming tickets, forms, emails, and requests by hand: read it,
-classify it, pull out fields, summarize, decide where it goes, check for missing
-info, prep it for review. Slow, inconsistent, hard to scale. This local AI workflow
-automates that loop while keeping a human in the loop for anything low-confidence or
-incomplete.
+<div align="center">
 
-## Document Categories and Routing
+## 📊 EVALUATION RESULTS
 
-Categories: Billing Request · Support Ticket · Customer Complaint · Vendor Request ·
-Internal Operations Request · Policy Question · General Inquiry
+| Metric | Score | Count |
+|:---|:---:|:---:|
+| ✅ JSON Validity Rate | **100.0%** | 28/28 |
+| ✅ Classification Match | **100.0%** | 28/28 |
+| ✅ Routing Match | **100.0%** | 28/28 |
+| ✅ Required-Field Completion | **78.6%** | 22/28 |
+| ✅ Human-Review Precision | **1.00** | — |
+| ✅ Human-Review Recall | **1.00** | — |
 
-Routing decisions: Finance Review · Customer Support Review · Operations Review ·
-Technical Review · Human Review Required · General Queue
+*Sample set: 28 documents · 7 categories · 6 incomplete · 4 ambiguous · 10 escalation triggers*
 
-## Document-Specific Required Fields
+</div>
 
-Different document types expect different fields, so validation is per-type:
+---
 
-| Document type | Required fields |
-|---------------|-----------------|
-| Billing Request | customer ID, invoice number, requested action, issue summary |
-| Support Ticket | issue description, priority, requested action |
-| Customer Complaint | customer ID, complaint summary, priority, requested action |
-| Vendor Request | vendor name, request type, requested action |
-| Policy Question | topic, question |
-| Internal Operations Request | requested action |
+<div align="center">
 
-## Output Schema
+## 🎯 BUSINESS PROBLEM
+
+</div>
+
+Teams still process incoming tickets, forms, emails, and requests by hand: read it, classify it, pull out fields, summarize, decide where it goes, check for missing info, prep it for review. **Slow · Inconsistent · Hard to scale.**
+
+This local AI workflow automates that entire loop while keeping a human in the loop for anything low-confidence or incomplete.
+
+---
+
+<div align="center">
+
+## 📄 DOCUMENT CATEGORIES & ROUTING
+
+</div>
+
+<div align="center">
+
+| 🏷️ Category | 🔀 Routing Decision |
+|:---:|:---:|
+| `Billing Request` | Finance Review |
+| `Support Ticket` | Customer Support Review |
+| `Customer Complaint` | Operations Review |
+| `Vendor Request` | Technical Review |
+| `Internal Operations Request` | Operations Review |
+| `Policy Question` | General Queue |
+| `General Inquiry` | General Queue |
+
+</div>
+
+---
+
+<div align="center">
+
+## 📤 OUTPUT SCHEMA
+
+</div>
 
 ```json
 {
-  "document_type": "Billing Request",
-  "priority": "Medium",
-  "customer_id": "CUS-1029",
-  "request_id": "CUS-1029",
-  "invoice_number": "INV-88421",
-  "vendor_name": null,
-  "topic": null,
-  "issue_summary": "Customer was billed twice, a suspected overcharge.",
-  "requested_action": "Refund the duplicate charge and reissue the invoice.",
-  "summary": "Billing Request: customer reports a duplicate charge and asks for a correction.",
-  "routing_decision": "Finance Review",
-  "missing_fields": [],
+  "document_type"    : "Billing Request",
+  "priority"         : "Medium",
+  "customer_id"      : "CUS-1029",
+  "invoice_number"   : "INV-88421",
+  "issue_summary"    : "Customer was billed twice — suspected overcharge.",
+  "requested_action" : "Refund duplicate charge and reissue invoice.",
+  "summary"          : "Billing Request: customer reports duplicate charge, requests correction.",
+  "routing_decision" : "Finance Review",
+  "missing_fields"   : [],
   "validation_status": "pass",
-  "review_status": "Ready for Review",
-  "confidence_flag": "Acceptable",
-  "confidence_score": 1.0
+  "review_status"    : "Ready for Review",
+  "confidence_flag"  : "Acceptable",
+  "confidence_score" : 1.0
 }
 ```
 
-## Confidence Scoring
+---
 
-Confidence is calculated using transparent workflow checks — not a random LLM score:
-JSON validity, required-field completion, allowed document type, allowed routing
-decision, summary completeness, and missing-field count. The score starts at 1.0 and
-loses points for low classification confidence, invalid JSON, failed validation,
-each missing required field, and a weak/empty summary.
+<div align="center">
 
-## Human Review Rules
+## 🏗️ ARCHITECTURE
 
-A document is routed to human review when any of the following hold:
+</div>
 
-- required fields are missing
-- document type is unclear (low classification confidence)
-- routing decision is unsupported / validation fails
-- confidence score is below threshold (0.6)
-- JSON output is invalid after the retry
-- summary is empty or too weak
-- input text is too short or ambiguous
-
-## Validation Checks
-
-Valid JSON format · required fields present (per type) · allowed document type ·
-allowed priority value · allowed routing decision · missing-field detection · empty
-summary detection · customer ID format check · human-review flag when outputs are
-incomplete.
-
-## Retry Handling
-
-First attempt generates the normal structured output. If the JSON is invalid or
-required fields cannot be parsed, the system retries with stricter instructions. If
-the second attempt still fails, the record is saved and routed to human review.
-
-## Audit Logging (Workflow Trace)
-
-Every run writes a step-by-step workflow trace: document received, text cleaned,
-classification completed, extraction completed, summary generated, routing selected,
-validation passed/failed, confidence scored, review flag created. The trace is
-stored and viewable in the UI and via the API.
-
-## SQLite / Database Storage
-
-Stored per document: raw document text, document type, extracted fields (full JSON),
-summary, routing decision, validation status, confidence score, review status, team
-role, and the workflow logs. This proves the system creates trackable records, not
-temporary chat output. SQLite is the default; **PostgreSQL** is supported by setting
-`DATABASE_URL`. Schema changes are managed with **Alembic** migrations.
-
-## Architecture
-
-See [`docs/architecture.md`](docs/architecture.md) for the full diagram.
-
-```mermaid
-flowchart LR
-    IN[Intake txt/pdf] --> CLEAN[Clean] --> CLS[Classify] --> EXT[Extract +retry] --> SUM[Summarize] --> RTE[Route] --> SCO[Score] --> VAL[Validate] --> ESC{Reliable?}
-    ESC -->|yes| RR[Ready for Review]
-    ESC -->|no| HR[Needs Human Review]
-    RR --> DB[(SQLite / Postgres)]
-    HR --> DB
-    CLS -. prompt .-> LLM[(Mock / Ollama / LangChain)]
-    EXT -. prompt .-> LLM
-    SUM -. prompt .-> LLM
-    RTE -. prompt .-> LLM
-```
+<div align="center">
 
 | Layer | Component |
-|-------|-----------|
-| Frontend | Streamlit UI (process, role-filtered review queue, history, dashboard) |
-| Backend | FastAPI (optional API-key auth, CORS, Prometheus `/metrics`, CSV export) |
-| Orchestration | Plain-Python step orchestrator with validation gate + confidence scoring |
-| Model | Ollama + Llama 3 (optionally via LangChain) — or a deterministic mock |
-| Validation | Rule-based Python checks + transparent confidence scoring |
-| Data | SQLAlchemy ORM -> SQLite or PostgreSQL; Alembic migrations |
-| Observability | Structured logging + Prometheus metrics |
+|:---:|:---|
+| 🖥️ **Frontend** | Streamlit UI — process, role-filtered review queue, history, dashboard |
+| ⚡ **Backend** | FastAPI — optional API-key auth, CORS, Prometheus `/metrics`, CSV export |
+| 🧩 **Orchestration** | Plain-Python step orchestrator with validation gate + confidence scoring |
+| 🤖 **Model** | Ollama + Llama 3 (optionally via LangChain) — or deterministic mock |
+| 🛡️ **Validation** | Rule-based Python checks + transparent confidence scoring |
+| 🗄️ **Data** | SQLAlchemy ORM → SQLite or PostgreSQL · Alembic migrations |
+| 📈 **Observability** | Structured logging + Prometheus metrics |
 
-## Local-First Design
+</div>
 
-The project runs locally by default so it can be tested without paid APIs, paid
-cloud services, or external credentials. Ollama and Llama 3 can be used for local
-model execution, while the mock backend keeps the project reproducible for
-evaluation. Local free execution is a strength, not a weakness.
+---
 
-## LangChain
+<div align="center">
 
-LangChain is supported as an **optional** orchestration backend for local Ollama
-execution (`LLM_BACKEND=langchain`). The default demo uses the deterministic mock
-backend; the core orchestration is plain Python, so LangChain is not required.
+## 🔧 CONFIDENCE SCORING — TRANSPARENT, NOT RANDOM
 
-## Tech Stack
+</div>
 
-Python, FastAPI, Pydantic + pydantic-settings, SQLAlchemy, Alembic, Streamlit,
-Pandas, Prometheus, Ollama + Llama 3, LangChain (optional), Docker / docker-compose,
-pytest + coverage, ruff, pre-commit, GitHub Actions.
+```python
+# Confidence is calculated from verifiable workflow checks — never a black box
+confidence_score = 1.0   # starts perfect
 
-## API Endpoints
+deductions = {
+    "invalid_json"              : -0.40,
+    "failed_validation"         : -0.30,
+    "low_classification_conf"   : -0.20,
+    "each_missing_required_field": -0.10,
+    "weak_or_empty_summary"     : -0.10,
+}
+
+# A document routes to Human Review when score < 0.6
+```
+
+---
+
+<div align="center">
+
+## 🚨 HUMAN REVIEW TRIGGERS
+
+</div>
+
+<div align="center">
+
+```
+A document is escalated to Human Review when ANY of the following hold:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  🔴  Required fields are missing
+  🔴  Document type is unclear (low classification confidence)
+  🔴  Routing decision is unsupported or validation fails
+  🔴  Confidence score < 0.6
+  🔴  JSON output invalid after retry
+  🔴  Summary is empty or too weak
+  🔴  Input text is too short or ambiguous
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+</div>
+
+---
+
+<div align="center">
+
+## 🌐 API ENDPOINTS
+
+</div>
+
+<div align="center">
 
 | Method | Path | Purpose |
-|--------|------|---------|
-| GET  | `/health` | health + active backend |
-| POST | `/process` | run workflow on pasted text |
-| POST | `/upload` | run workflow on a `.txt`/`.pdf` |
-| GET  | `/result/{id}` | full record + workflow trace |
-| GET  | `/history` | recent processed documents |
-| GET  | `/review-queue?role=` | open review items, optional role filter |
-| POST | `/review/{id}/resolve?decision=` | resolve / approve / reject |
-| PATCH | `/result/{id}/route?new_route=` | reviewer routing override |
-| GET  | `/metrics-summary` | aggregate counts (JSON) |
-| GET  | `/export.csv?reviewed_only=` | history (or reviewed-only) as CSV |
-| GET  | `/metrics` | Prometheus exposition format |
+|:---:|:---|:---|
+| `GET` | `/health` | Health check + active backend |
+| `POST` | `/process` | Run workflow on pasted text |
+| `POST` | `/upload` | Run workflow on .txt/.pdf |
+| `GET` | `/result/{id}` | Full record + workflow trace |
+| `GET` | `/history` | Recent processed documents |
+| `GET` | `/review-queue?role=` | Open review items, optional role filter |
+| `POST` | `/review/{id}/resolve` | Resolve / approve / reject |
+| `PATCH` | `/result/{id}/route` | Reviewer routing override |
+| `GET` | `/metrics-summary` | Aggregate counts (JSON) |
+| `GET` | `/export.csv` | History as CSV |
+| `GET` | `/metrics` | Prometheus exposition format |
 
-## How to Run Locally
+</div>
+
+---
+
+<div align="center">
+
+## 🚀 HOW TO RUN LOCALLY
+
+</div>
 
 ```bash
+# ── 1. Install & Setup ────────────────────────────────────────────────────────
 pip install -r requirements.txt
-make migrate        # or the app auto-creates tables
-make api            # http://localhost:8000/docs
-make ui             # http://localhost:8501  (separate terminal)
-make test           # pytest + coverage
-make lint           # ruff
-make eval           # metrics over the labelled sample set
+make migrate          # or the app auto-creates tables on first run
+
+# ── 2. Start Services ─────────────────────────────────────────────────────────
+make api              # → http://localhost:8000/docs
+make ui               # → http://localhost:8501  (separate terminal)
+
+# ── 3. Test & Lint ────────────────────────────────────────────────────────────
+make test             # pytest + coverage
+make lint             # ruff
+make eval             # metrics over labelled sample set
 ```
 
-Real local model:
-
 ```bash
+# ── Real Local Model (Ollama + Llama 3) ───────────────────────────────────────
 ollama pull llama3
 export LLM_BACKEND=ollama          # or "langchain" (pip install langchain-ollama)
-python scripts/check_ollama.py     # verify connectivity first
+python scripts/check_ollama.py     # verify connectivity
 python -m app.main
+
+# ── Docker ────────────────────────────────────────────────────────────────────
+docker compose up --build                   # mock backend, API + UI
+docker compose --profile ollama up          # add local Ollama service
+docker compose --profile postgres up        # add PostgreSQL service
 ```
 
-PostgreSQL / Docker:
+---
 
-```bash
-export DATABASE_URL=postgresql+psycopg2://user:pass@localhost:5432/workflow
-docker compose up --build                # mock backend, API + UI
-docker compose --profile ollama up        # add a local Ollama service
-docker compose --profile postgres up      # add a PostgreSQL service
+<div align="center">
+
+## 🛠️ TECH STACK
+
+</div>
+
+<div align="center">
+
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![Pydantic](https://img.shields.io/badge/Pydantic-E92063?style=for-the-badge&logo=pydantic&logoColor=white)
+![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-D71F00?style=for-the-badge&logoColor=white)
+![Alembic](https://img.shields.io/badge/Alembic-6C47A3?style=for-the-badge&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![Prometheus](https://img.shields.io/badge/Prometheus-E6522C?style=for-the-badge&logo=prometheus&logoColor=white)
+![Ollama](https://img.shields.io/badge/Ollama-000000?style=for-the-badge&logoColor=white)
+![LangChain](https://img.shields.io/badge/LangChain-1C3C3C?style=for-the-badge&logo=langchain&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![pytest](https://img.shields.io/badge/pytest-0A9EDC?style=for-the-badge&logo=pytest&logoColor=white)
+![Ruff](https://img.shields.io/badge/Ruff-D7FF64?style=for-the-badge&logoColor=black)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
+
+</div>
+
+---
+
+<div align="center">
+
+## ⚠️ LIMITATIONS & ROADMAP
+
+</div>
+
+```
+Current Limitations                    Planned Improvements
+────────────────────────────────────   ────────────────────────────────────────
+• Default: deterministic mock backend  → OCR for scanned PDFs
+• Ollama/Llama 3 needs local setup     → Per-type extraction schemas
+• Small evaluation sample set          → Per-user authentication & audit
+• No OCR for scanned PDFs              → Alerting on metrics dashboard
+                                       → Model-based confidence scoring
+                                       → Multi-tenant review queues
+                                       → Deployment automation
+                                       → Historical evaluation dashboard
 ```
 
-## Evaluation
+---
 
-The workflow was tested on a labelled sample set to validate JSON structure,
-required-field completion, classification and routing consistency, and review-flag
-behaviour. No production-accuracy claims are made.
+<div align="center">
 
-Sample set: 28 documents across 7 categories, including 6 incomplete examples and
-4 ambiguous/short examples, with 10 documents that should trigger human review.
+## 👤 BUILT BY
 
-```
-JSON validity rate ............. 100.0% (28/28)
-Classification match ........... 100.0% (28/28)
-Routing match .................. 100.0% (28/28)
-Required-field completion ......  78.6% (22/28)
-Human-review flag behaviour .... TP=10 FP=0 FN=0 TN=18
-Human-review precision/recall .. 1.00 / 1.00
-```
+**Venkata Vivek Varma Alluru**
+*AI Engineer · ML Engineer · Data Scientist*
 
-(On the bundled sample set using the deterministic mock backend. These reflect that
-the backend and labels are aligned and that the escalation logic behaves as intended
-— not a claim about real-world model accuracy.)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Avvv19)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com)
+[![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com)
 
-## Limitations
+> *"The best AI system is the one that solves real problems reliably at scale."*
 
-- The default backend uses deterministic mock logic for reproducibility.
-- Ollama and Llama 3 require local model setup; those backends are not exercised by the bundled tests.
-- The sample evaluation set is small.
-- Scanned PDFs require OCR, which is not included yet (text-based PDFs work).
-- This is a local portfolio workflow, not an enterprise production system.
+</div>
 
-## Future Improvements
-
-OCR for scanned PDFs · document-type-specific extraction schemas · per-user
-authentication and audit · alerting on the metrics · model-based confidence ·
-multi-tenant review queues · deployment automation · evaluation dashboard with
-historical tracking.
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,25:6e40c9,50:00d4ff,75:1a0533,100:0d1117&height=120&section=footer" width="100%"/>
