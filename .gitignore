@@ -10,3 +10,5 @@ data/outputs/*
 htmlcov/
 .venv/
 venv/
+docs/screenshots/*.log
+docs/screenshots/*.pid
