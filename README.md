@@ -243,10 +243,6 @@ Human-review precision/recall .. 1.00 / 1.00
 the backend and labels are aligned and that the escalation logic behaves as intended
 — not a claim about real-world model accuracy.)
 
-## Resume Positioning
-
-See [`RESUME.md`](RESUME.md) for AI Engineer and Data Scientist resume wording.
-
 ## Limitations
 
 - The default backend uses deterministic mock logic for reproducibility.
