@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,30:1a0533,60:0d2d6b,100:0d1117&height=200&section=header&text=Local%20AI%20Agent%20Workflow&fontSize=46&fontColor=ffffff&fontAlignY=40&fontStyle=bold&desc=Autonomous%20Document%20Intelligence%20Pipeline%20%C2%B7%20Local%20First%20%C2%B7%20Production%20Grade&descSize=15&descColor=a5b4fc&animation=fadeIn" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=200&section=header&text=Local%20AI%20Agent%20Workflow&fontSize=42&fontColor=fff&fontAlignY=42&fontStyle=bold&desc=Autonomous%20Document%20Intelligence%20%E2%80%A2%20Local%20First%20%E2%80%A2%20Production%20Grade&descSize=14&descColor=ddd&animation=twinkling" width="100%"/>
 
 <br/>
 
