@@ -269,7 +269,7 @@ docker compose --profile postgres up       # switches to PostgreSQL
 
 <div align="center">
 
-Built by **Venkata Vivek Varma Alluru** &nbsp;·&nbsp; AI Engineer &nbsp;·&nbsp; ML Engineer &nbsp;·&nbsp; Data Scientist
+Built by **Venkata Vivek Varma Alluru** &nbsp;·&nbsp;
 
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/Avvv19)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com)
