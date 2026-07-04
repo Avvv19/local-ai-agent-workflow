@@ -1,179 +1,113 @@
 # Multi-Agent Document Automation System
 
-Production-grade LangChain agent pipeline that converts unstructured document requests into extracted fields and classified summaries. Built for client deployment at an AI automation consultancy — ships with full observability, audit logging, human-review checkpoints, and a CI pipeline.
+[![CI](https://github.com/Avvv19/local-ai-agent-workflow/actions/workflows/ci.yml/badge.svg)](https://github.com/Avvv19/local-ai-agent-workflow/actions/workflows/ci.yml)
+[![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/)
+[![Code style: ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
+
+Agent pipeline converting document requests into extracted fields, classified summaries, and routed review outputs. Built for production: schema-validated, retry-safe, and fully auditable.
 
 ---
 
-## What it does
+## THE PROBLEM IT SOLVES
 
-Takes a document as input, routes it through a multi-agent pipeline, and returns:
-- Extracted structured fields (entities, dates, amounts, parties)
-- Document type classification
-- Summarised output routed to the appropriate review queue
-- Audit log entry for every step
-
-Every agent boundary has Pydantic schema validation. Every failure has exponential backoff retry logic and surfaces in structured logs before reaching any downstream system.
+Manual document review creates bottlenecks in every document-heavy operation. Teams spend time reviewing every incoming file when they should only see the ones that need a decision. This system routes documents automatically. Teams review exceptions. Everything else processes without human touch.
 
 ---
 
-## Architecture
+## ARCHITECTURE
 
+```mermaid
+flowchart TD
+    A[Document Input] --> B[FastAPI Endpoint]
+    B --> C{Input Validation\nPydantic Schema}
+    C -->|Invalid| D[Reject with Error Log]
+    C -->|Valid| E[Document Agent\nLangChain + OpenAI]
+    E --> F{Output Validation\nPydantic Schema}
+    F -->|Invalid| G[Exponential Backoff Retry]
+    G -->|Max retries exceeded| H[Dead Letter Queue\nHuman Review]
+    G -->|Retry succeeds| F
+    F -->|Valid| I[Routing Agent\nClassification]
+    I --> J{Confidence Score}
+    J -->|Below threshold| H
+    J -->|Above threshold| K[Auto Route Output]
+    K --> L[SQLite Audit Log]
+    K --> M[BigQuery Run Log]
+    L --> N[Streamlit Dashboard]
+    M --> N
+    E --> O[LangSmith Trace]
 ```
-Input Document
-     │
-     ▼
-[Intake Agent]  ─── Pydantic validation ─── SQLite audit log
-     │
-     ▼
-[Classification Agent]  (XGBoost + TF-IDF fallback for cost efficiency)
-     │
-     ▼
-[Extraction Agent]  ─── Exponential backoff on LLM calls
-     │
-     ▼
-[Routing Agent]  ─── Human-review checkpoint
-     │
-     ▼
-Structured Output + Audit Trail
-```
 
-LangSmith tracing is active on every agent call. Each trace captures: input, output, latency, token usage, and any retry events.
+See [ARCHITECTURE.md](ARCHITECTURE.md) for full data layer diagram.
 
 ---
 
-## Tech stack
+## WHAT MAKES IT PRODUCTION-GRADE
 
-| Layer | Technology |
+**Pydantic validation at every agent step**
+LLM output is unreliable by default. Every agent response is validated against a strict schema before passing to the next step. Invalid outputs are caught before they corrupt downstream systems.
+
+**Exponential backoff retry logic**
+API rate limits and transient failures are handled with exponential backoff. The system retries intelligently rather than failing hard on temporary issues.
+
+**SQLite audit logging**
+Every document processed, every agent decision made, every output produced is logged with a timestamp and trace ID. Any result can be traced back to its source document.
+
+**LangSmith observability**
+LangChain traces are sent to LangSmith in real time. Latency, token usage, and chain execution are visible without instrumenting the code manually.
+
+**Human-review checkpoints**
+Documents that score below the confidence threshold are routed to a human review queue. The system never silently passes uncertain outputs.
+
+**GitHub Actions CI pipeline**
+Every push runs ruff linting, mypy type checking, and pytest. Container builds are verified on every merge to main.
+
+---
+
+## TECH STACK
+
+| Layer | Tool |
 |---|---|
-| Agent framework | LangChain |
-| LLM | OpenAI API (GPT-4o) |
-| API layer | FastAPI |
-| Validation | Pydantic v2 |
+| Agent Orchestration | LangChain, OpenAI API |
+| API Layer | FastAPI |
+| Output Validation | Pydantic v2 |
 | Observability | LangSmith |
-| Audit storage | SQLite |
+| Storage | SQLite (audit), GCP BigQuery (production logs) |
+| Infrastructure | Docker, Terraform |
 | UI | Streamlit |
-| Containerisation | Docker |
-| Infrastructure | Terraform |
-| CI | GitHub Actions |
+| Testing | pytest, GitHub Actions |
 
 ---
 
-## Quickstart
+## RUNNING LOCALLY
 
-### Prerequisites
-- Python 3.11+
-- Docker (optional, for container run)
-- OpenAI API key
-- LangSmith API key (free tier at smith.langchain.com)
+1. Clone the repo
+2. Copy `.env.example` to `.env` and add your API keys
+3. `docker-compose up`
+4. Open `localhost:8501` for the Streamlit UI
 
-### Run locally
+---
+
+## RUNNING TESTS
 
 ```bash
-git clone https://github.com/Avvv19/local-ai-agent-workflow
-cd local-ai-agent-workflow
-cp .env.example .env          # add your API keys
-pip install -r requirements.txt
-python -m uvicorn app.main:app --reload
-```
-
-Open http://localhost:8000/docs for the FastAPI interactive docs.
-
-### Run with Docker
-
-```bash
-docker build -t local-ai-agent-workflow .
-docker run -p 8000:8000 --env-file .env local-ai-agent-workflow
-```
-
-### Run Streamlit UI
-
-```bash
-streamlit run ui/app.py
+pytest tests/ -v --cov=src
 ```
 
 ---
 
-## Environment variables
+## DESIGN DECISIONS
 
-```
-OPENAI_API_KEY=sk-...
-LANGCHAIN_API_KEY=ls__...
-LANGCHAIN_TRACING_V2=true
-LANGCHAIN_PROJECT=local-ai-agent-workflow
-DATABASE_URL=sqlite:///audit.db
-```
+**Why LangChain over raw OpenAI API calls**
+LangChain provides structured chain execution, built-in retry handling, and LangSmith integration. For a multi-step agent workflow, the abstraction is worth the overhead.
 
----
+**Why SQLite for local audit logs**
+SQLite requires zero infrastructure for local development. Production deployments use GCP BigQuery for structured run logs with partitioned schemas for efficient querying.
 
-## Project structure
-
-```
-local-ai-agent-workflow/
-├── app/
-│   ├── main.py              # FastAPI entry point
-│   ├── agents/
-│   │   ├── intake.py        # Document intake and initial validation
-│   │   ├── classifier.py    # XGBoost + LLM classification
-│   │   ├── extractor.py     # Field extraction agent
-│   │   └── router.py        # Output routing and human-review trigger
-│   ├── models/
-│   │   └── schemas.py       # Pydantic models for all agent I/O
-│   └── utils/
-│       ├── retry.py         # Exponential backoff logic
-│       ├── audit.py         # SQLite audit logging
-│       └── langsmith_setup.py  # LangSmith tracing initialisation
-├── ui/
-│   └── app.py               # Streamlit interface
-├── tests/
-│   ├── test_agents.py
-│   ├── test_schemas.py
-│   └── test_retry.py
-├── .github/
-│   └── workflows/
-│       └── ci.yml           # Lint, test, Docker build on every push
-├── Dockerfile
-├── requirements.txt
-├── terraform/
-│   └── main.tf
-└── .env.example
-```
+**Why Pydantic for output validation**
+LLM outputs are strings. Business logic needs typed, validated structures. Pydantic bridges the gap with clear error messages when the model produces malformed output.
 
 ---
 
-## Observability
+## STATUS
 
-Every agent call is traced in LangSmith. To view traces:
-1. Open https://smith.langchain.com
-2. Navigate to project `local-ai-agent-workflow`
-3. Each run shows the full agent chain, token usage, latency, and any retries
-
-The SQLite audit log (`audit.db`) records every document processed with timestamp, classification result, extraction output, routing decision, and any error events. Query it directly:
-
-```sql
-SELECT * FROM audit_log ORDER BY created_at DESC LIMIT 20;
-```
-
----
-
-## CI pipeline
-
-Every push to `main` or `develop` runs:
-1. `ruff check` — lint
-2. `ruff format --check` — format check
-3. `pytest tests/` — unit tests with coverage
-4. `docker build` — container integrity check
-
-See `.github/workflows/ci.yml` for full config.
-
----
-
-## Runbook
-
-**Q: A document went through but the extraction output looks wrong.**
-A: Check `audit.db` for the document's run_id. The full extraction agent input/output is logged. If it was a classification error (wrong document type routed to wrong extractor), check the classifier confidence score in the log — scores below 0.6 fall back to the LLM classifier.
-
-**Q: The agent is retrying repeatedly.**
-A: The retry logic caps at 3 attempts with exponential backoff (2s, 4s, 8s). After 3 failures the run is logged as ERROR and routed to the human-review queue. Check the LangSmith trace for the specific error message.
-
-**Q: How do I add a new document type?**
-A: Add a new class to `app/models/schemas.py`, update the classifier training data in `data/training/`, retrain (`python scripts/train_classifier.py`), and add extraction logic in `app/agents/extractor.py`.
+Production pattern. Deployed via AWS Lambda for orchestration with S3 for document storage.
