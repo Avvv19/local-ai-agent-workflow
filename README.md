@@ -4,17 +4,11 @@
 [![Python 3.11](https://img.shields.io/badge/python-3.11-blue.svg)](https://www.python.org/downloads/)
 [![Code style: ruff](https://img.shields.io/badge/code%20style-ruff-000000.svg)](https://github.com/astral-sh/ruff)
 
-Agent pipeline converting document requests into extracted fields, classified summaries, and routed review outputs. Built for production: schema-validated, retry-safe, and fully auditable.
+Agent pipeline converting document requests into extracted fields, classified summaries, and routed review outputs. Schema-validated at every step, retry-safe, and fully auditable.
 
 ---
 
-## THE PROBLEM IT SOLVES
-
-Manual document review creates bottlenecks in every document-heavy operation. Teams spend time reviewing every incoming file when they should only see the ones that need a decision. This system routes documents automatically. Teams review exceptions. Everything else processes without human touch.
-
----
-
-## ARCHITECTURE
+## Architecture
 
 ```mermaid
 flowchart TD
@@ -41,7 +35,7 @@ See [ARCHITECTURE.md](ARCHITECTURE.md) for full data layer diagram.
 
 ---
 
-## WHAT MAKES IT PRODUCTION-GRADE
+## Production design
 
 **Pydantic validation at every agent step**
 LLM output is unreliable by default. Every agent response is validated against a strict schema before passing to the next step. Invalid outputs are caught before they corrupt downstream systems.
@@ -63,7 +57,7 @@ Every push runs ruff linting, mypy type checking, and pytest. Container builds a
 
 ---
 
-## TECH STACK
+## Tech stack
 
 | Layer | Tool |
 |---|---|
@@ -71,14 +65,14 @@ Every push runs ruff linting, mypy type checking, and pytest. Container builds a
 | API Layer | FastAPI |
 | Output Validation | Pydantic v2 |
 | Observability | LangSmith |
-| Storage | SQLite (audit), GCP BigQuery (production logs) |
-| Infrastructure | Docker, Terraform |
+| Storage | SQLite (audit), GCP BigQuery (run logs) |
+| Infrastructure | Docker |
 | UI | Streamlit |
 | Testing | pytest, GitHub Actions |
 
 ---
 
-## RUNNING LOCALLY
+## Running locally
 
 1. Clone the repo
 2. Copy `.env.example` to `.env` and add your API keys
@@ -87,7 +81,7 @@ Every push runs ruff linting, mypy type checking, and pytest. Container builds a
 
 ---
 
-## RUNNING TESTS
+## Running tests
 
 ```bash
 pytest tests/ -v --cov=src
@@ -95,7 +89,7 @@ pytest tests/ -v --cov=src
 
 ---
 
-## DESIGN DECISIONS
+## Design decisions
 
 **Why LangChain over raw OpenAI API calls**
 LangChain provides structured chain execution, built-in retry handling, and LangSmith integration. For a multi-step agent workflow, the abstraction is worth the overhead.
@@ -105,9 +99,3 @@ SQLite requires zero infrastructure for local development. Production deployment
 
 **Why Pydantic for output validation**
 LLM outputs are strings. Business logic needs typed, validated structures. Pydantic bridges the gap with clear error messages when the model produces malformed output.
-
----
-
-## STATUS
-
-Production pattern. Deployed via AWS Lambda for orchestration with S3 for document storage.
