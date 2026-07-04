@@ -7,6 +7,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
+RUN mkdir -p /app/data
+
 ENV LOG_LEVEL=INFO \
     DB_PATH=/app/data/audit.db \
     LANGCHAIN_TRACING_V2=false
