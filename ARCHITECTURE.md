@@ -29,6 +29,6 @@ flowchart TD
 flowchart LR
     A[S3 Document Storage] --> B[Document Agent]
     B --> C[SQLite Audit Log\nLocal development]
-    B --> D[GCP BigQuery\nProduction run logs]
+    B --> D[GCP BigQuery\nOptional run-log adapter]
     D --> E[Ops Team Dashboard\nQuery without engineering support]
 ```
